@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Europe Outliers</title>
+<meta name="description" content="Long conversations with New Europe’s outliers. Recorded where they are. No studio.">
+<meta name="theme-color" content="#f0efea">
+<meta property="og:title" content="New Europe Outliers">
+<meta property="og:description" content="Long conversations with New Europe’s outliers.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23f0efea'/%3E%3Crect%20x='14'%20y='0'%20width='1.5'%20height='64'%20fill='%2314130f'%20opacity='.45'/%3E%3Cpath%20d='M24%2044V20h4l10%2016V20h4v24h-4L28%2028v16z'%20fill='%2314130f'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* ------------------------------------------------------------
+   New Europe Outliers - holding page
+
+   Uncoated paper, one ledger line, and type. No colour beyond
+   the ink. The composition - margins, the positions of the
+   running head, wordmark, statement and slug - is unchanged;
+   only the styling is.
+
+     --u = one artboard point = 100vw / 1920
+   ------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  /* Paper palette */
+  --paper: #f0efea;                   /* uncoated stone white   */
+  --ink:   #14130f;
+  --ink-2: #55534d;                   /* secondary text         */
+  --ink-3: #6e6c66;                   /* metadata, slug, status */
+  --rule:  rgba(20, 19, 15, .18);     /* the ledger margin line */
+
+  /* Geometry - unchanged from the previous layout */
+  --u:      0.05208333vw;             /* 1 artboard pt                 */
+  --margin: 5.2083%;                  /* the left axis everything keeps */
+  --column: 18.75%;                   /* right edge of the text column */
+
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono:  "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  font-feature-settings: "kern", "liga";
+}
+
+::selection { background: var(--ink); color: var(--paper); }
+
+/* ------------------------------------------------------------
+   The sheet
+   ------------------------------------------------------------ */
+
+.stage {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+/* Paper grain - delete this block to go perfectly flat */
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: .045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/* The one rule on the page: the margin line the type hangs off */
+.rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--margin);
+  width: 1px;
+  background: var(--rule);
+  transform-origin: top center;
+  animation: draw 1.1s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+/* ------------------------------------------------------------
+   Layout - everything hangs off one left axis
+   ------------------------------------------------------------ */
+
+.masthead,
+.content,
+.stamp {
+  position: absolute;
+  left: var(--margin);
+  margin: 0;
+  padding-left: calc(28 * var(--u));   /* clears the margin line */
+}
+
+.masthead,
+.content { right: var(--column); }
+
+.masthead { top: 10.9%; }
+
+.content {
+  top: 51.6%;
+  transform: translateY(-50%);
+}
+
+.stamp { top: 93.5%; }
+
+/* ------------------------------------------------------------
+   Type
+   ------------------------------------------------------------ */
+
+/* Running head and footer slug are a matched pair */
+.kicker,
+.stamp {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: min(max(10px, calc(15 * var(--u))), 17px);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.wordmark {
+  margin: 0;
+  font-weight: 400;
+  font-size: max(26px, calc(150 * var(--u)));
+  line-height: .96;
+  letter-spacing: -.022em;
+}
+
+.wordmark__line { display: block; white-space: nowrap; }
+
+/* the italic is the only inflection the wordmark takes */
+.wordmark__line--italic {
+  font-style: italic;
+  letter-spacing: -.01em;
+}
+
+/* Sits off the wordmark, not off the space the old divider held */
+.statement {
+  margin: calc(68 * var(--u)) 0 0;
+  max-width: 21em;
+  font-size: min(max(15px, calc(32 * var(--u))), 42px);
+  font-weight: 400;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+/* A second statement at the same tier, but with enough air above it
+   to read as its own line, not a wrapped continuation of the first. */
+.statement + .statement {
+  margin-top: calc(25 * var(--u));
+}
+
+.secondary {
+  margin: calc(32 * var(--u)) 0 0;
+  max-width: 21em;
+  font-size: min(max(13px, calc(25 * var(--u))), 33px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: .9em;
+  margin: calc(40 * var(--u)) 0 0;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: min(max(10px, calc(15 * var(--u))), 17px);
+  letter-spacing: .04em;
+  color: var(--ink-3);
+}
+
+.status__dot {
+  flex: none;
+  width:  max(4px, calc(6 * var(--u)));
+  height: max(4px, calc(6 * var(--u)));
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 3.2s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------
+   Entrance - one reveal, nothing else
+   ------------------------------------------------------------ */
+
+.fade { opacity: 0; animation: rise .9s cubic-bezier(.22, .61, .36, 1) forwards; }
+
+.masthead.fade                { animation-delay: .06s; }
+.content > .fade:nth-child(1) { animation-delay: .16s; }
+.content > .fade:nth-child(2) { animation-delay: .26s; }
+.content > .fade:nth-child(3) { animation-delay: .34s; }
+.content > .fade:nth-child(4) { animation-delay: .42s; }
+.content > .fade:nth-child(5) { animation-delay: .50s; }
+.stamp.fade                   { animation-delay: .58s; }
+
+@keyframes draw {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(calc(14 * var(--u))); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade { opacity: 1; animation: none; }
+  .rule { animation: none; }
+  .status__dot { animation: none; }
+}
+
+/* ------------------------------------------------------------
+   Short landscape - the whole stack compresses together
+   ------------------------------------------------------------ */
+
+@media (orientation: landscape) and (max-height: 760px) {
+  .wordmark  { font-size: max(26px, calc(124 * var(--u))); }
+  .statement { margin-top: calc(72 * var(--u)); font-size: min(max(14px, calc(26 * var(--u))), 32px); }
+  .secondary { margin-top: calc(26 * var(--u)); font-size: min(max(12px, calc(21 * var(--u))), 26px); }
+  .status    { margin-top: calc(30 * var(--u)); }
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  .wordmark  { font-size: max(24px, calc(100 * var(--u))); }
+  .statement { margin-top: calc(52 * var(--u)); font-size: min(max(13px, calc(22 * var(--u))), 26px); }
+  .secondary { margin-top: calc(20 * var(--u)); font-size: min(max(12px, calc(18 * var(--u))), 22px); }
+  .status    { margin-top: calc(22 * var(--u)); }
+}
+
+/* ------------------------------------------------------------
+   Portrait / narrow
+   ------------------------------------------------------------ */
+
+@media (max-width: 860px), (orientation: portrait) {
+  :root {
+    --u: 0.16vw;
+    --margin: 8%;
+    --column: 8%;
+  }
+
+  .masthead,
+  .content,
+  .stamp { padding-left: calc(26 * var(--u)); }
+
+  .wordmark  { font-size: clamp(38px, calc(74 * var(--u)), 104px); line-height: .98; }
+  .kicker,
+  .stamp     { font-size: clamp(9px,  calc(15 * var(--u)), 13px); letter-spacing: .2em; }
+  .statement { margin-top: calc(84 * var(--u)); font-size: clamp(17px, calc(32 * var(--u)), 28px); max-width: 17em; }
+  .secondary { margin-top: calc(30 * var(--u)); font-size: clamp(14px, calc(26 * var(--u)), 23px); max-width: 17em; }
+  .status    { margin-top: calc(44 * var(--u)); font-size: clamp(9.5px, calc(15 * var(--u)), 13px); }
+}
+</style>
+</head>
+
+<body>
+<div class="stage">
+  <div class="rule" aria-hidden="true"></div>
+
+  <header class="masthead fade">
+    <p class="kicker">New Europe Outliers</p>
+  </header>
+
+  <main class="content">
+    <h1 class="wordmark fade">
+      <span class="wordmark__line">New Europe</span>
+      <span class="wordmark__line wordmark__line--italic">Outliers</span>
+    </h1>
+
+    <p class="statement fade">Long conversations with New Europe’s outliers.</p>
+    <p class="statement fade">New Europe is a mindset, not a map.</p>
+
+    <p class="secondary fade">Recorded where they are. No studio.</p>
+
+    <p class="status fade"><span class="status__dot" aria-hidden="true"></span>First conversations in progress.</p>
+  </main>
+
+  <p class="stamp fade">neos.am</p>
+</div>
+</body>
+</html>
