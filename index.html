@@ -111,16 +111,13 @@ body {
    ------------------------------------------------------------ */
 
 .masthead,
-.content,
-.stamp {
+.content {
   position: absolute;
   left: var(--margin);
+  right: var(--column);
   margin: 0;
   padding-left: calc(28 * var(--u));   /* clears the margin line */
 }
-
-.masthead,
-.content { right: var(--column); }
 
 .masthead { top: 10.9%; }
 
@@ -129,15 +126,11 @@ body {
   transform: translateY(-50%);
 }
 
-.stamp { top: 93.5%; }
-
 /* ------------------------------------------------------------
    Type
    ------------------------------------------------------------ */
 
-/* Running head and footer slug are a matched pair */
-.kicker,
-.stamp {
+.kicker {
   font-family: var(--mono);
   font-weight: 400;
   font-size: min(max(10px, calc(15 * var(--u))), 17px);
@@ -221,7 +214,6 @@ body {
 .content > .fade:nth-child(3) { animation-delay: .34s; }
 .content > .fade:nth-child(4) { animation-delay: .42s; }
 .content > .fade:nth-child(5) { animation-delay: .50s; }
-.stamp.fade                   { animation-delay: .58s; }
 
 @keyframes draw {
   from { transform: scaleY(0); }
@@ -272,12 +264,10 @@ body {
   }
 
   .masthead,
-  .content,
-  .stamp { padding-left: calc(26 * var(--u)); }
+  .content { padding-left: calc(26 * var(--u)); }
 
   .wordmark  { font-size: clamp(38px, calc(74 * var(--u)), 104px); line-height: .98; }
-  .kicker,
-  .stamp     { font-size: clamp(9px,  calc(15 * var(--u)), 13px); letter-spacing: .2em; }
+  .kicker    { font-size: clamp(9px,  calc(15 * var(--u)), 13px); letter-spacing: .2em; }
   .statement { margin-top: calc(84 * var(--u)); font-size: clamp(17px, calc(32 * var(--u)), 28px); max-width: 17em; }
   .secondary { margin-top: calc(30 * var(--u)); font-size: clamp(14px, calc(26 * var(--u)), 23px); max-width: 17em; }
   .status    { margin-top: calc(44 * var(--u)); font-size: clamp(9.5px, calc(15 * var(--u)), 13px); }
@@ -306,8 +296,6 @@ body {
 
     <p class="status fade"><span class="status__dot" aria-hidden="true"></span>First conversations in progress.</p>
   </main>
-
-  <p class="stamp fade">neos.am</p>
 </div>
 </body>
 </html>
